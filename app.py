@@ -3,6 +3,7 @@ import pandas as pd
 import json
 from plotly.utils import PlotlyJSONEncoder
 import plotly.express as px
+import plotly.graph_objects as go
 
 app = Flask(__name__)
 
@@ -10,11 +11,28 @@ app = Flask(__name__)
 @app.route("/")
 def index():
     df = pd.read_csv("output.csv")
-    percentage_ = df[-1:].iloc[0, 1].round(2)
-    ratio_ = round(1 / df[-1:].iloc[0, 1].round(2) * 100)
+    percentage_ = round(df[-1:].iloc[0, 1] * 100, 2)
+    ratio_ = round(1 / df[-1:].iloc[0, 1])
     latest_date_ = pd.to_datetime(df[-1:].iloc[0, 0]).strftime("%d/%m")
 
-    fig = px.line(x=df.dte, y=df.pc)
+    fig = go.Figure(
+        layout=go.Layout(
+            template="simple_white",
+            height=400,
+            margin=dict(l=5, t=10, b=20, r=5),
+        )
+    )
+    fig.add_trace(
+        go.Scatter(
+            x=df.dte,
+            y=df.pc.round(4),
+            name="Modelled Prevalence",
+            line=dict(color="#000000"),
+        )
+    )
+    fig.update_layout(yaxis_tickformat="p")
+
+    # fig = px.line(x=df.dte, y=df.pc, template="simple_white")
 
     chart_json = json.dumps(fig, cls=PlotlyJSONEncoder)
 

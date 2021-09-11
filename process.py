@@ -29,7 +29,7 @@ df.columns = ["dte", "pc"]
 df["dte"] = pd.to_datetime(df["dte"]).dt.date
 output = df.drop_duplicates(subset="dte", keep="last").copy().reset_index(drop=True)
 output["pc"] = np.where(
-    output["dte"] < datetime.date(2021, 5, 10), output["pc"] * 100, output["pc"]
+    output["dte"] >= datetime.date(2021, 5, 10), output["pc"] / 100, output["pc"]
 )
 
 output.to_csv("../output.csv", index=False)

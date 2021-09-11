@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>ONS Covid Survey</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.1/dist/css/bootstrap.min.css" rel="stylesheet"
+        integrity="sha384-F3w7mX95PdgyTmZZMECAngseQB83DfGTowi0iMjiWaeVhAn4FJkqJByhZMI3AhiU" crossorigin="anonymous">
+    <script src="https://cdn.plot.ly/plotly-2.4.2.min.js"></script>
+</head>
+
+<body>
+
+    <div style="text-align: center;">
+        <div class="row justify-content-evenly">
+            <div class="col-2">
+            </div>
+            <div class="col-8">
+                <h1>ONS COVID-19 Infection Survey</h1>
+            </div>
+            <div class="col-2">
+            </div>
+        </div>
+        <div class="row justify-content-evenly">
+            <div class="col-1">
+            </div>
+            <div class="col-8">
+                The Office for National Statistics COVID-19 Infection Survey is the largest regular survey of SARS-CoV-2
+                (COVID-19) infections, providing vital information to help the UK's response to the pandemic.
+                <br><br>
+                You can read more about it at the ONS' website <a
+                    href="https://www.ons.gov.uk/surveys/informationforhouseholdsandindividuals/householdandindividualsurveys/covid19infectionsurveycis">here</a>
+            </div>
+            <div class="col-1">
+            </div>
+        </div>
+        <br>
+        <div class="row justify-content-evenly">
+            <div class="col-1">
+            </div>
+            <div class="col-7">
+                Their most recent data shows that {{ percentage }}% people in England would have tested positive on {{
+                latest_date }}, equivalent to one in {{ ratio }} people
+            </div>
+            <div class="col-1">
+            </div>
+        </div>
+        <br>
+        <div class="row justify-content-evenly">
+            <div class="col-1">
+            </div>
+            <div class="col-8">
+                <div id="plot"></div>
+            </div>
+            <div class="col-1">
+            </div>
+        </div>
+    </div>
+    <script type="text/javascript">
+        var chart = {{ chart | safe }}
+        PLOT = document.getElementById('plot')
+        Plotly.newPlot(PLOT, chart.data, chart.layout)
+        console.log(chart.data)
+    </script>
+</body>
+
+</html>

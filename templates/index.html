@@ -62,8 +62,9 @@
     </div>
     <script type="text/javascript">
         var chart = {{ chart | safe }}
+        var config = { responsive: true }
         PLOT = document.getElementById('plot')
-        Plotly.newPlot(PLOT, chart.data, chart.layout)
+        Plotly.newPlot(PLOT, chart.data, chart.layout, config)
         console.log(chart.data)
     </script>
 </body>

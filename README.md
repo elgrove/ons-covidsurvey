@@ -10,6 +10,8 @@ These are, along with REACT by Imperial and the ZOE study by King's College Lond
 
 The headline daily testing numbers rely on self-selection for testing, or mandatory testing programmes in schools and other instituions and can fluctuate with days of the week among other seasonal noise.
 
+I had been wanting to make this for most of the pandemic but had other projects to focus on, in the end I got a push and made it in about 6 hours, most of which on flights between London and Vienna.
+
 ## Getting Started
 
 ### Dependencies

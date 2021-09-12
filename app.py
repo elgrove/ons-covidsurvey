@@ -4,13 +4,29 @@ import json
 from plotly.utils import PlotlyJSONEncoder
 import plotly.express as px
 import plotly.graph_objects as go
+from apscheduler.schedulers.background import BackgroundScheduler
+import os
+
+
+def update_data():
+    os.system("python update.py")
+
+
+def process_data():
+    os.system("python process.py")
+
+
+scheduler = BackgroundScheduler(daemon=True)
+scheduler.add_job(update_data, "interval", seconds=180)
+scheduler.add_job(process_data, "interval", seconds=180)
+scheduler.start()
 
 app = Flask(__name__)
 
 
 @app.route("/")
 def index():
-    df = pd.read_csv("output.csv")
+    df = pd.read_csv("raw/output.csv")
     percentage_ = round(df[-1:].iloc[0, 1] * 100, 2)
     ratio_ = round(1 / df[-1:].iloc[0, 1])
     latest_date_ = pd.to_datetime(df[-1:].iloc[0, 0]).strftime("%d/%m")

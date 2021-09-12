@@ -32,4 +32,4 @@ output["pc"] = np.where(
     output["dte"] >= datetime.date(2021, 5, 10), output["pc"] / 100, output["pc"]
 )
 
-output.to_csv("../output.csv", index=False)
+output.to_csv("output.csv", index=False)

@@ -1,7 +1,6 @@
 import pandas as pd
 import requests
 from bs4 import BeautifulSoup, SoupStrainer
-import wget
 import os
 
 os.chdir("raw")

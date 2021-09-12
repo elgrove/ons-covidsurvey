@@ -17,8 +17,8 @@ def process_data():
 
 
 scheduler = BackgroundScheduler(daemon=True)
-scheduler.add_job(update_data, "interval", seconds=180)
-scheduler.add_job(process_data, "interval", seconds=180)
+scheduler.add_job(update_data, "interval", seconds=5)
+scheduler.add_job(process_data, "interval", seconds=5)
 scheduler.start()
 
 app = Flask(__name__)

@@ -1,3 +1,0 @@
-- make plotly responsive
-- add scheduler for data update
-- move to sqlite?

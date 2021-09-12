@@ -9,11 +9,11 @@ import os
 
 
 def update_data():
-    os.system("python update.py")
+    os.system("python scripts/update.py")
 
 
 def process_data():
-    os.system("python process.py")
+    os.system("python scripts/process.py")
 
 
 scheduler = BackgroundScheduler(daemon=True)
